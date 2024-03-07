@@ -1,0 +1,285 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ahs.attendence"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="34"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:3:5-66
+15-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:3:22-64
+16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+16-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:4:5-80
+16-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:4:22-78
+17    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+17-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:5:5-78
+17-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:5:22-76
+18    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+18-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:6:5-76
+18-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:6:22-74
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:7:5-80
+19-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:7:22-78
+20    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+20-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:8:5-79
+20-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:8:22-77
+21    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+21-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:9:5-84
+21-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:9:22-82
+22    <uses-permission android:name="android.permission.WAKE_LOCK" />
+22-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:10:5-68
+22-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:10:22-65
+23    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+23-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:11:5-76
+23-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:11:22-74
+24    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+24-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:12:5-95
+24-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:12:22-92
+25
+26    <queries>
+26-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:14:5-27:15
+27        <intent>
+27-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:15:9-18:18
+28            <action android:name="android.intent.action.VIEW" />
+28-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:16:13-65
+28-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:16:21-62
+29
+30            <data android:scheme="https" />
+30-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:17:13-44
+30-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:17:19-41
+31        </intent>
+32        <intent>
+32-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:19:9-22:18
+33            <action android:name="android.intent.action.DIAL" />
+33-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:20:13-65
+33-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:20:21-62
+34
+35            <data android:scheme="tel" />
+35-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:17:13-44
+35-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:17:19-41
+36        </intent>
+37        <intent>
+37-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:23:9-26:18
+38            <action android:name="android.intent.action.SEND" />
+38-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:24:13-65
+38-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:24:21-62
+39
+40            <data android:mimeType="*/*" />
+40-->C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\app\src\main\AndroidManifest.xml:17:13-44
+41        </intent>
+42        <!-- Needs to be explicitly declared on Android R+ -->
+43        <package android:name="com.google.android.apps.maps" />
+43-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:33:9-64
+43-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:33:18-61
+44    </queries>
+45
+46    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+46-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
+46-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
+47    <uses-permission android:name="android.permission.VIBRATE" />
+47-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-66
+47-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-63
+48    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+48-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-81
+48-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-78
+49    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+49-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-79
+49-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-76
+50    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Include required permissions for Google Maps API to run. -->
+50-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-77
+50-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-74
+51    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+51-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:23:5-79
+51-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:23:22-76
+52
+53    <uses-feature
+53-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:26:5-28:35
+54        android:glEsVersion="0x00020000"
+54-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:27:9-41
+55        android:required="true" />
+55-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:28:9-32
+56
+57    <permission
+57-->[androidx.core:core:1.12.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\4e88a3abd396991dff3bbdde13780114\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+58        android:name="com.ahs.attendence.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+58-->[androidx.core:core:1.12.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\4e88a3abd396991dff3bbdde13780114\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+59        android:protectionLevel="signature" />
+59-->[androidx.core:core:1.12.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\4e88a3abd396991dff3bbdde13780114\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+60
+61    <uses-permission android:name="com.ahs.attendence.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+61-->[androidx.core:core:1.12.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\4e88a3abd396991dff3bbdde13780114\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+61-->[androidx.core:core:1.12.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\4e88a3abd396991dff3bbdde13780114\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+62
+63    <application
+64        android:name="android.app.Application"
+65        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+65-->[androidx.core:core:1.12.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\4e88a3abd396991dff3bbdde13780114\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+66        android:debuggable="true"
+67        android:extractNativeLibs="false"
+68        android:icon="@mipmap/launcher_icon"
+69        android:label="AHS Properties - HR"
+70        android:requestLegacyExternalStorage="true" >
+71        <activity
+72            android:name="com.ahs.attendence.MainActivity"
+73            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+74            android:exported="true"
+75            android:hardwareAccelerated="true"
+76            android:launchMode="singleTop"
+77            android:theme="@style/LaunchTheme"
+78            android:windowSoftInputMode="adjustResize" >
+79
+80            <!--
+81                 Specifies an Android theme to apply to this Activity as soon as
+82                 the Android process has started. This theme is visible to the user
+83                 while the Flutter UI initializes. After that, this theme continues
+84                 to determine the Window background behind the Flutter UI.
+85            -->
+86            <meta-data
+87                android:name="io.flutter.embedding.android.NormalTheme"
+88                android:resource="@style/NormalTheme" />
+89
+90            <intent-filter>
+91                <action android:name="android.intent.action.MAIN" />
+92
+93                <category android:name="android.intent.category.LAUNCHER" />
+94            </intent-filter>
+95        </activity>
+96
+97        <meta-data
+98            android:name="flutterEmbedding"
+99            android:value="2" />
+100        <meta-data
+101            android:name="com.google.android.geo.API_KEY"
+102            android:value="AIzaSyD8NBU9RQQgn7LKoqV8im8xnt3GZiG_oHU" />
+103
+104        <receiver
+104-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-18:40
+105            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+105-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-97
+106            android:exported="false" />
+106-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+107        <receiver
+107-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-28:20
+108            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+108-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-101
+109            android:exported="false" >
+109-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-37
+110            <intent-filter>
+110-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-27:29
+111                <action android:name="android.intent.action.BOOT_COMPLETED" />
+111-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:17-79
+111-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:25-76
+112                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+112-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:24:17-84
+112-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:24:25-81
+113                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+113-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:17-82
+113-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:25-79
+114                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+114-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-82
+114-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-79
+115            </intent-filter>
+116        </receiver>
+117
+118        <activity
+118-->[:url_launcher_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+119            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+119-->[:url_launcher_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+120            android:exported="false"
+120-->[:url_launcher_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+121            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+121-->[:url_launcher_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+122
+123        <service
+123-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-18:44
+124            android:name="id.flutter.flutter_background_service.BackgroundService"
+124-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-83
+125            android:enabled="true"
+125-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-35
+126            android:exported="true"
+126-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-36
+127            android:stopWithTask="false" />
+127-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-41
+128
+129        <receiver
+129-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:20:9-23:39
+130            android:name="id.flutter.flutter_background_service.WatchdogReceiver"
+130-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-82
+131            android:enabled="true"
+131-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-35
+132            android:exported="true" />
+132-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
+133        <receiver
+133-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:9-32:20
+134            android:name="id.flutter.flutter_background_service.BootReceiver"
+134-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-78
+135            android:enabled="true"
+135-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-35
+136            android:exported="true" >
+136-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-36
+137            <intent-filter>
+137-->[:flutter_background_service_android] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-31:29
+138                <action android:name="android.intent.action.BOOT_COMPLETED" />
+138-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:17-79
+138-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:25-76
+139                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+139-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:17-82
+139-->[:flutter_local_notifications] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:25-79
+140            </intent-filter>
+141        </receiver>
+142
+143        <service
+143-->[:location] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-17:56
+144            android:name="com.lyokone.location.FlutterLocationService"
+144-->[:location] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-71
+145            android:enabled="true"
+145-->[:location] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-35
+146            android:exported="false"
+146-->[:location] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
+147            android:foregroundServiceType="location" /> <!-- Needs to be explicitly declared on P+ -->
+147-->[:location] C:\Users\SuvarnaVaradaraju\Downloads\codebackup\AHSAttendence\attendence\android\build\location\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-53
+148        <uses-library
+148-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:39:9-41:40
+149            android:name="org.apache.http.legacy"
+149-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:40:13-50
+150            android:required="false" />
+150-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\b333ee55db1647ef3260b50c76b96506\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:41:13-37
+151
+152        <activity
+152-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\ba49d624d084f9d7ce05bda7963803c2\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+153            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+153-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\ba49d624d084f9d7ce05bda7963803c2\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+154            android:exported="false"
+154-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\ba49d624d084f9d7ce05bda7963803c2\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+155            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+155-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\ba49d624d084f9d7ce05bda7963803c2\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+156
+157        <meta-data
+157-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\bd3c3e3f925ea63f3208dc00d79bc4df\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+158            android:name="com.google.android.gms.version"
+158-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\bd3c3e3f925ea63f3208dc00d79bc4df\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+159            android:value="@integer/google_play_services_version" />
+159-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\bd3c3e3f925ea63f3208dc00d79bc4df\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+160
+161        <uses-library
+161-->[androidx.window:window:1.0.0-beta04] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\9138de99405ea083bf188db23f4ff3c5\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+162            android:name="androidx.window.extensions"
+162-->[androidx.window:window:1.0.0-beta04] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\9138de99405ea083bf188db23f4ff3c5\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+163            android:required="false" />
+163-->[androidx.window:window:1.0.0-beta04] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\9138de99405ea083bf188db23f4ff3c5\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+164        <uses-library
+164-->[androidx.window:window:1.0.0-beta04] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\9138de99405ea083bf188db23f4ff3c5\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+165            android:name="androidx.window.sidecar"
+165-->[androidx.window:window:1.0.0-beta04] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\9138de99405ea083bf188db23f4ff3c5\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+166            android:required="false" />
+166-->[androidx.window:window:1.0.0-beta04] C:\Users\SuvarnaVaradaraju\.gradle\caches\transforms-3\9138de99405ea083bf188db23f4ff3c5\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+167    </application>
+168
+169</manifest>
