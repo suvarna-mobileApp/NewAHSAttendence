@@ -297,7 +297,7 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
     print(newData);
     var dio = Dio();
     var response = await dio.request(
-      'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/AHSAuthentication',
+      'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com/api/services/AHSMobileServices/AHSMobileService/AHSAuthentication',
       options: Options(
         method: 'POST',
         headers: headers,
@@ -350,7 +350,7 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
       'client_id': '7d2f26f6-2e67-4299-9abd-fbac27deff25',
       'client_secret': 'rcI8Q~eugdoR2M0Yx8_gkTPqqyPyT.sn9ab3BdeF',
       'grant_type': 'client_credentials',
-      'resource': 'https://iye-live.operations.dynamics.com'
+      'resource': 'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com'
     };
     var dio = Dio();
     var response = await dio.request(
