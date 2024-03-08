@@ -130,7 +130,7 @@ class _ViewProfileState extends State<ViewProfileExample> with TickerProviderSta
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0,0.0,20.0,0.0),
+                      padding: const EdgeInsets.fromLTRB(20.0,10.0,20.0,0.0),
                       child: Container(
                         alignment: Alignment.center,
                         child: new Text(userName,
@@ -240,7 +240,7 @@ class _ViewProfileState extends State<ViewProfileExample> with TickerProviderSta
     });
     var dio = Dio();
     var response = await dio.request(
-      'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com/api/services/AHSMobileServices/AHSMobileService/getProfile',
+      'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/getProfile',
       options: Options(
         method: 'POST',
         headers: headers,

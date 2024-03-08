@@ -57,6 +57,7 @@ flutter_icons:
     android: "launcher_icon"
     ios: true
     image_path: "assets/image/logo.png"
+    remove_alpha_ios: true
 
 flutter_geofence:
 
@@ -85,12 +86,8 @@ flutter:
   assets:
     - assets/image/
     - assets/fonts/
-    - assets/image/bg.jpg
-    - assets/image/ahs_bk.png
     - assets/image/ahsfull.png
-    - assets/image/icon_black.png
     - assets/image/icon_bell.png
-    - assets/image/icon_profile.png
     - assets/image/icon_profile1.png
     - assets/image/user_attendence48.png
     - assets/image/user_profile48.png
