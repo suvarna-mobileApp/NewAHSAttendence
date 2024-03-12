@@ -220,7 +220,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       currentLocaMarker = Marker(
       markerId: MarkerId('currentLocation'),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-      position: LatLng(locationData!.latitude!, locationData!.longitude!),
+      position: LatLng(locationData.latitude!, locationData.longitude!),
       infoWindow: InfoWindow(title: 'Current Location', snippet: 'my location'),
       onTap: () {
         print('current location tapped');
