@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:attendence/model/login/LoginResponse.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../Colours.dart';
 import '../dashboard/Dashboard.dart';
 import '../model/login/AccessToken.dart';
@@ -37,7 +35,6 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
   late SharedPreferences prefs;
   late LoginResponse loginResponse;
   bool isLoading = false;
-  ConnectivityResult _connectivityResult = ConnectivityResult.none;
 
   @override
   void initState() {
@@ -46,12 +43,6 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
     _requestNotificationPermission();
   }
 
-  Future<void> checkConnectivity() async {
-    var connectivityResult = await Connectivity().checkConnectivity();
-    setState(() {
-      _connectivityResult = connectivityResult;
-    });
-  }
 
   void _requestNotificationPermission() async {
     PermissionStatus status = await Permission.notification.request();
@@ -306,7 +297,7 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
     print(newData);
     var dio = Dio();
     var response = await dio.request(
-      'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com/api/services/AHSMobileServices/AHSMobileService/AHSAuthentication',
+      'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/AHSAuthentication',
       options: Options(
         method: 'POST',
         headers: headers,
@@ -359,7 +350,7 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
       'client_id': '7d2f26f6-2e67-4299-9abd-fbac27deff25',
       'client_secret': 'rcI8Q~eugdoR2M0Yx8_gkTPqqyPyT.sn9ab3BdeF',
       'grant_type': 'client_credentials',
-      'resource': 'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com'
+      'resource': 'https://iye-live.operations.dynamics.com'
     };
     var dio = Dio();
     var response = await dio.request(

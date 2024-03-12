@@ -102,7 +102,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     super.initState();
     initializeApp();
     getToken();
-
+    WidgetsFlutterBinding.ensureInitialized();
     var initializationSettingsAndroid = AndroidInitializationSettings('logo');
     var initializationSettingsIOS = IOSInitializationSettings(onDidReceiveLocalNotification: null);
     var initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
@@ -154,7 +154,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     });
     var dio = Dio();
     var response = await dio.request(
-      'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com/api/services/AHSMobileServices/AHSMobileService/getProfile',
+      'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/getProfile',
       options: Options(
         method: 'POST',
         headers: headers,
@@ -188,7 +188,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       'client_id': '7d2f26f6-2e67-4299-9abd-fbac27deff25',
       'client_secret': 'rcI8Q~eugdoR2M0Yx8_gkTPqqyPyT.sn9ab3BdeF',
       'grant_type': 'client_credentials',
-      'resource': 'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com'
+      'resource': 'https://iye-live.operations.dynamics.com'
     };
     var dio = Dio();
     var response = await dio.request(
@@ -264,7 +264,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
           }else if(damaclat == salelat && checkedInText == "Punch-In"){
             sendLocationToServer(empId, "AHS Sales Center", "Y");
             scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
-
           }
         }else{
           if(damaclat != 25.09554209900229 && checkedInText == "Punch-Out"){
@@ -272,7 +271,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
           }else if(damaclat != salelat && checkedInText == "Punch-Out"){
             sendLocationToServer(empId, "AHS Sales Center", "");
           }
-
           scheduleNotification(
               "AHS Properties - HR", "You are out of office - Punch out");
          /* ScaffoldMessenger.of(context).showSnackBar(
@@ -282,26 +280,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
           );*/
         }
       });
-  }
-
-  Future<bool> enableBackgroundMode() async {
-    bool _bgModeEnabled = await location.isBackgroundModeEnabled();
-    if (_bgModeEnabled) {
-      return true;
-    } else {
-      try {
-        await location.enableBackgroundMode();
-      } catch (e) {
-        debugPrint(e.toString());
-      }
-      try {
-        _bgModeEnabled = await location.enableBackgroundMode();
-      } catch (e) {
-        debugPrint(e.toString());
-      }
-      print(_bgModeEnabled); //True!
-      return _bgModeEnabled;
-    }
   }
 
   Future<void> scheduleNotification(String title, String subtitle) async {
@@ -478,9 +456,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
             icon: Icon(Icons.notifications_active),
             color: ColorConstants.kPrimaryColor,
             onPressed: () {
-              scheduleNotification(
-                  "Georegion added", "Your geofence has been added! - damac");
-              // Add button press logic here
+
             },
           ),
         ],
@@ -546,11 +522,20 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                   ),
                   onPressed: () {
                     isLoading = true;
-                    if(checkedInText == "Punch-In"){
-                      sendLocationToServer(empId, "DAMAC", "Y");
-                    }else if(checkedInText == "Punch-Out"){
-                      sendLocationToServer(empId, "DAMAC", "");
-                    }
+                      if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
+                        sendLocationToServer(empId, "Damac Executive Heights", "Y");
+                        scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
+
+                      }else if(damaclat == salelat && checkedInText == "Punch-In"){
+                        sendLocationToServer(empId, "AHS Sales Center", "Y");
+                        scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
+
+                      }else if(damaclat == 25.09554209900229 && checkedInText == "Punch-Out"){
+                        sendLocationToServer(empId, "Damac Executive Heights", "");
+
+                      }else if(damaclat == salelat && checkedInText == "Punch-Out"){
+                        sendLocationToServer(empId, "AHS Sales Center", "");
+                      }
                   },
                   child: Text(
                     checkedInText,
@@ -755,7 +740,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     });
     var dio = Dio();
     var response = await dio.request(
-      'https://ahsca7486d9b32c9b0ddevaos.axcloud.dynamics.com/api/services/AHSMobileServices/AHSMobileService/setLocation',
+      'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/setLocation',
       options: Options(
         method: 'POST',
         headers: headers,
