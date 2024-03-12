@@ -42,7 +42,7 @@ import '../profile/ViewProfile.dart';
           content: "Running in background",
         );
       }
-      //print('FLUTTER BACKGROUND SERVICE: ${ThreadClass.myStaticVariable}');
+     // print('FLUTTER BACKGROUND SERVICE: ');
       service.invoke(
         'update', {
           "current_date": DateTime.now().toIso8601String(),
@@ -230,6 +230,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
 
   void getCurrentLocation() async{
     location = Location();
+    location.enableBackgroundMode(enable: true);
     if(location.isBackgroundModeEnabled() == false){
       location.enableBackgroundMode(enable: true);
     }
