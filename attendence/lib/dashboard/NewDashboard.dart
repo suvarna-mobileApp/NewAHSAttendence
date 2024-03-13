@@ -106,9 +106,9 @@ class _DashboardExampleState extends State<NewDashboardExample> with TickerProvi
       if (distanceBetween < 200) {
         print('user reached to the destination...');
 
-        scheduleNotification(
+       /* scheduleNotification(
             "Georegion added", "Your geofence has been added! - damac");
-
+*/
         /// I simply show a snackBar message here you can implement your custom logic here.
         /*ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('You reached to the location',
@@ -122,8 +122,8 @@ class _DashboardExampleState extends State<NewDashboardExample> with TickerProvi
               backgroundColor: Colors.redAccent,)
         );*/
 
-        scheduleNotification(
-            "Georegion added", "You are outside radius");
+       /* scheduleNotification(
+            "Georegion added", "You are outside radius");*/
       }
     });
   }

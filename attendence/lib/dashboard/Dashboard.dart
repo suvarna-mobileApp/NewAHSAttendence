@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:math';
 import 'dart:ui';
 import 'package:attendence/dashboard/NewDashboard.dart';
@@ -100,16 +99,15 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
   @override
   void initState() {
     super.initState();
-    initializeApp();
-    getToken();
     WidgetsFlutterBinding.ensureInitialized();
     var initializationSettingsAndroid = AndroidInitializationSettings('logo');
     var initializationSettingsIOS = IOSInitializationSettings(onDidReceiveLocalNotification: null);
     var initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
     flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: null);
     getCurrentLocation();
+    initializeApp();
+    getToken();
   }
-
 
   initializeApp() async {
     final service = FlutterBackgroundService();
@@ -230,7 +228,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
 
   void getCurrentLocation() async{
     location = Location();
-    location.enableBackgroundMode(enable: true);
     if(location.isBackgroundModeEnabled() == false){
       location.enableBackgroundMode(enable: true);
     }
