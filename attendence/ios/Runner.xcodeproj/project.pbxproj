@@ -492,7 +492,7 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution: AHS Properties LLC (PAPPBLSR3P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: AHS Properties LLC (PAPPBLSR3P)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = PAPPBLSR3P;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PAPPBLSR3P;
 				ENABLE_BITCODE = NO;
@@ -682,7 +682,7 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution: AHS Properties LLC (PAPPBLSR3P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: AHS Properties LLC (PAPPBLSR3P)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = PAPPBLSR3P;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PAPPBLSR3P;
 				ENABLE_BITCODE = NO;
@@ -716,7 +716,7 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution: AHS Properties LLC (PAPPBLSR3P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: AHS Properties LLC (PAPPBLSR3P)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = PAPPBLSR3P;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PAPPBLSR3P;
 				ENABLE_BITCODE = NO;

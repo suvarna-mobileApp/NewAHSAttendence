@@ -659,7 +659,14 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(3))),
                 ),
-              ))), Expanded(flex: 1, child: Card(
+              ))),
+                Expanded(flex: 1, child: InkWell(onTap: (){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('No Data Found',
+                        style: TextStyle(color: Colors.white),),
+                        backgroundColor: Colors.redAccent,)
+                  );
+    },child: Card(
                 margin: EdgeInsets.all(10),
                 child: ClipPath(
                   child: Container(
@@ -684,7 +691,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                   clipper: ShapeBorderClipper(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(3))),
-                ),))
+                ),),))
               ]),
             ])),
           /*  Container(
