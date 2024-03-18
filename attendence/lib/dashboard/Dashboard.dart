@@ -256,18 +256,18 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
         if (distanceBetween < 200) {
           print('user reached to the destination...');
           if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
-            sendLocationToServer(empId, "Damac Executive Heights", "Y");
+            sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
             scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
           }else if(damaclat == salelat && checkedInText == "Punch-In"){
-            sendLocationToServer(empId, "AHS Sales Center", "Y");
+            sendLocationToServer(empId, "AHS Sales Center", "Y",'Punched In AHS Sales Center \n' + currentDate + " " + currentTime);
             scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
           }
         }else{
           if(damaclat != 25.09554209900229 && checkedInText == "Punch-Out"){
-            sendLocationToServer(empId, "Damac Executive Heights", "");
+            sendLocationToServer(empId, "Damac Executive Heights", "",'Punched Out Damac Executive heights \n' + currentDate + " " + currentTime);
           }else if(damaclat != salelat && checkedInText == "Punch-Out"){
-            sendLocationToServer(empId, "AHS Sales Center", "");
+            sendLocationToServer(empId, "AHS Sales Center", "",'Punched Out AHS Sales Center \n' + currentDate + " " + currentTime);
           }
           scheduleNotification(
               "AHS Properties - HR", "You are out of office - Punch out");
@@ -521,18 +521,18 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                   onPressed: () {
                     isLoading = true;
                       if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
-                        sendLocationToServer(empId, "Damac Executive Heights", "Y");
+                        sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
                       }else if(damaclat == salelat && checkedInText == "Punch-In"){
-                        sendLocationToServer(empId, "AHS Sales Center", "Y");
+                        sendLocationToServer(empId, "AHS Sales Center", "Y",'Punched In AHS Sales Center \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
                       }else if(damaclat == 25.09554209900229 && checkedInText == "Punch-Out"){
-                        sendLocationToServer(empId, "Damac Executive Heights", "");
+                        sendLocationToServer(empId, "Damac Executive Heights", "",'Punched Out Damac Executive heights \n' + currentDate + " " + currentTime);
 
                       }else if(damaclat == salelat && checkedInText == "Punch-Out"){
-                        sendLocationToServer(empId, "AHS Sales Center", "");
+                        sendLocationToServer(empId, "AHS Sales Center", "",'Punched Out AHS Sales Center \n' + currentDate + " " + currentTime);
                       }
                   },
                   child: Text(
@@ -730,7 +730,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     );
   }
 
-  sendLocationToServer(String empId,String location,String status) async {
+  sendLocationToServer(String empId,String location,String status,String name ) async {
     final prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('token').toString();
 
@@ -763,12 +763,12 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
           showText = true;
           _checkIn(context);
           checkedInText = "Punch-Out";
-          checkedInTextDate = 'Punched In Damac Executive heights \n' + currentDate + " " + currentTime;
+          checkedInTextDate = name;
           changeName(checkedInText,checkedInTextDate);
         }else if(checkedInText == "Punch-Out"){
           showText = true;
           _checkIn(context);
-          checkedInTextDate = 'Punched Out Damac Executive heights \n' + currentDate + " " + currentTime;
+          checkedInTextDate = name;
           checkedInText = "Punch-In";
           changeName(checkedInText,checkedInTextDate);
         }
