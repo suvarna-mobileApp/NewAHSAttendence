@@ -34,7 +34,7 @@ import '../profile/ViewProfile.dart';
     service.on('stopService').listen((event) {
       service.stopSelf();
     });
-    Timer.periodic(const Duration(seconds: 2), (timer) async {
+    Timer.periodic(const Duration(seconds: 60), (timer) async {
       if (service is AndroidServiceInstance) {
         service.setForegroundNotificationInfo(
           title: "AHS Properties - HR",
