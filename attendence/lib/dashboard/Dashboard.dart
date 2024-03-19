@@ -34,13 +34,14 @@ import '../profile/ViewProfile.dart';
     service.on('stopService').listen((event) {
       service.stopSelf();
     });
-    Timer.periodic(const Duration(seconds: 60), (timer) async {
+    Timer.periodic(const Duration(seconds: 2), (timer) async {
       if (service is AndroidServiceInstance) {
         service.setForegroundNotificationInfo(
           title: "AHS Properties - HR",
           content: "Running in background",
         );
       }
+
      // print('FLUTTER BACKGROUND SERVICE: ');
       service.invoke(
         'update', {
@@ -104,7 +105,8 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     var initializationSettingsIOS = IOSInitializationSettings(onDidReceiveLocalNotification: null);
     var initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
     flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: null);
-    getCurrentLocation();
+    checkCurrentLocation();
+    //getCurrentLocation();
     initializeApp();
     getToken();
   }
@@ -131,6 +133,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
   Future<bool> onIosBackground(ServiceInstance serviceInstance) async {
     return true;
   }
+
 
   void getToken() async {
     prefs = await SharedPreferences.getInstance();
@@ -280,6 +283,13 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       });
   }
 
+  void checkCurrentLocation(){
+  Timer.periodic(const Duration(seconds: 2), (timer) async {
+  //scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
+  getCurrentLocation();
+});
+}
+
   Future<void> scheduleNotification(String title, String subtitle) async {
     print("scheduling one with $title and $subtitle");
     var rng = new Random();
@@ -288,6 +298,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
         importance: Importance.high,
         priority: Priority.high,
         ticker: 'ticker');
+
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
