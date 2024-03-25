@@ -249,7 +249,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       });
     });
 
-    await location.changeSettings(accuracy: LocationAccuracy.high, interval: 600000, distanceFilter: 0);
+    await location.changeSettings(accuracy: LocationAccuracy.high, interval: 2000, distanceFilter: 0);
       location.onLocationChanged.listen((newLoc) {
 
         var distanceBetween = haversineDistance(
