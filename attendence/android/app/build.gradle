@@ -64,17 +64,17 @@ android {
     }
 
     signingConfigs {
-        /*release {
+        release {
             storeFile file("C:\\Users\\SuvarnaVaradaraju\\keystore\\ahs-hr.keystore")
             storePassword "android"
             keyAlias "alias_name"
             keyPassword "android"
-        }*/
+        }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 

@@ -49,14 +49,14 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
   late LatLng showLocation = const LatLng(25.09554209900229, 55.17285329480057);
   double damaclat = 25.09554209900229;
   double damaclong = 55.17285329480057;
-  double salelat = 25.09554209900229;
-  double salelonf = 25.09554209900229;
+  double salelat = 25.204129539405333;
+  double salelonf = 55.2630970221345;
   Location location = Location();
   late StreamSubscription<LocationData> _locationSubscription;
   final Set<Marker> markers = new Set();
   Set<Circle> circles = new Set();
   String checkedInText = "Punch-In";
-  String checkedInTextDate = "Punch-In";
+  String checkedInTextDate = "";
   bool showText = false;
   bool isLoading = false;
   String empId = "";
@@ -75,11 +75,9 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     var initializationSettingsIOS = IOSInitializationSettings(onDidReceiveLocalNotification: null);
     var initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
     flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: null);
-    checkCurrentLocation();
-    //getCurrentLocation();
     getToken();
+    checkCurrentLocation();
   }
-
 
   void getToken() async {
     prefs = await SharedPreferences.getInstance();
@@ -88,43 +86,53 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       empId = prefs.getString('username').toString();
       token = prefs.getString('token').toString();
       notify =  prefs.getBool('firstnotify')!;
+      if(notify == true){
+        checkedInText = "Punch-Out";
+        showText = true;
+      }else{
+        checkedInText = "Punch-In";
+      }
       Profile(empId,token);
     });
   }
 
   Profile(String empId,String token) async {
-    var headers = {
-      'Content-Type': 'application/json',
-      'Authorization': token
-    };
-    var data = json.encode({
-      "_empId": empId
-    });
-    var dio = Dio();
-    var response = await dio.request(
-      'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/getProfile',
-      options: Options(
-        method: 'POST',
-        headers: headers,
-      ),
-      data: data,
-    );
+    try{
+      var headers = {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      };
+      var data = json.encode({
+        "_empId": empId
+      });
+      var dio = Dio();
+      var response = await dio.request(
+        'https://iye-live.operations.dynamics.com/api/services/AHSMobileServices/AHSMobileService/getProfile',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+        data: data,
+      );
 
-    if (response.statusCode == 200) {
-      setState(() {
-        isLoading = false;
-      });
-      viewprofile data = viewprofile.fromJson(response.data);
-      userName = data.Name;
-      userMobile = data.mobilenumber;
-      userPhoto = data.photo;
-    } else if(response.statusCode == 401){
-      Autorization();
-    }else {
-      setState(() {
-        isLoading = false;
-      });
-      print(response.statusMessage);
+      if (response.statusCode == 200) {
+        setState(() {
+          isLoading = false;
+        });
+        viewprofile data = viewprofile.fromJson(response.data);
+        userName = data.Name;
+        userMobile = data.mobilenumber;
+        userPhoto = data.photo;
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        print(response.statusMessage);
+      }
+    } on DioError catch(e) {
+      if (e.response!.statusCode == 401) {
+        Autorization();
+      }
     }
   }
 
@@ -163,7 +171,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
   }
 
   addCurrentLocMarker(LocationData locationData){
-    /// Current Location marker, that will also be updating
       currentLocaMarker = Marker(
       markerId: MarkerId('currentLocation'),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
@@ -202,15 +209,17 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
         var distanceBetween = haversineDistance(
             LatLng(damaclat, damaclong), LatLng(
             newLoc.latitude!, newLoc.longitude!));
+        print("scheduling one with");
+        if (distanceBetween < 200) {
+          if(notify == false){
+            if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
+              sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
+              scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
-      /*  if (distanceBetween < 200) {
-          if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
-            sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
-            scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
-
-          }else if(damaclat == salelat && checkedInText == "Punch-In"){
-            sendLocationToServer(empId, "AHS Sales Center", "Y",'Punched In AHS Sales Center \n' + currentDate + " " + currentTime);
-            scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
+            }else if(damaclat == salelat && checkedInText == "Punch-In"){
+              sendLocationToServer(empId, "AHS Sales Center", "Y",'Punched In AHS Sales Center \n' + currentDate + " " + currentTime);
+              scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
+            }
           }
         }else{
           if(damaclat != 25.09554209900229 && checkedInText == "Punch-Out"){
@@ -220,12 +229,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
           }
           scheduleNotification(
               "AHS Properties - HR", "You are out of office - Punch out");
-         *//* ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('You reached to the location',
-                style: TextStyle(color: Colors.white),),
-                backgroundColor: Colors.redAccent,)
-          );*//*
-        }*/
+        }
       });
   }
 
@@ -297,6 +301,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     await prefs.remove('username');
     await prefs.remove('firstLogin');
     await prefs.remove("token");
+    await prefs.remove("firstnotify");
     setState(() {
       empId = '';
       token = "";
@@ -462,19 +467,23 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                   ),
                   onPressed: () {
                     isLoading = true;
-                      if(damaclat == damaclat && checkedInText == "Punch-In"){
+                      if(damaclat == salelat && checkedInText == "Punch-In"){
+                        prefs.setBool('firstnotify', true);
                         sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
                       }else if(damaclat == salelat && checkedInText == "Punch-In"){
+                        prefs.setBool('firstnotify', true);
                         sendLocationToServer(empId, "AHS Sales Center", "Y",'Punched In AHS Sales Center \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
                       }else if(damaclat == damaclat && checkedInText == "Punch-Out"){
+                        prefs.setBool('firstnotify', false);
                         sendLocationToServer(empId, "Damac Executive Heights", "",'Punched Out Damac Executive heights \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are out of office - Punch Out");
 
                       }else if(damaclat == salelat && checkedInText == "Punch-Out"){
+                        prefs.setBool('firstnotify', false);
                         sendLocationToServer(empId, "AHS Sales Center", "",'Punched Out AHS Sales Center \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are out of office - Punch Out");
                       }
@@ -638,43 +647,13 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                 ),),))
               ]),
             ])),
-          /*  Container(
-              width: double.infinity,
-              height: 400,
-              margin: EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
-              child: GoogleMap( //Map widget from google_maps_flutter package
-                zoomGesturesEnabled: true, //enable Zoom in, out on map
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(currentLocation.latitude! , currentLocation.longitude!,),//innital position in map
-                  //target: showLocation, //initial position
-                  zoom: 16.0, //initial zoom level
-                ),
-                markers: getmarkers(),
-                circles: circles,//markers to show on map
-                mapType: MapType.normal, //map type
-                onMapCreated: (GoogleMapController controller) { //method called when map is created
-                  setState(() {
-                    mapController = controller;
-                  });
-                },
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-                child: _buttons(checkedInText,context)
-            ),
-          if (showText)
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: _checkIn(context),
-            ),*/
           ],
         ),
       ),
     );
   }
 
-   sendLocationToServer(String empId,String location,String status,String name ) async {
+  sendLocationToServer(String empId,String location,String status,String name ) async {
     final prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('token').toString();
 

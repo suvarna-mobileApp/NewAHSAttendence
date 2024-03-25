@@ -38,8 +38,8 @@ class _DashboardExampleState extends State<NewDashboardExample> with TickerProvi
   late LatLng showLocation = const LatLng(25.09554209900229, 55.17285329480057);
   double damaclat = 25.09554209900229;
   double damaclong = 55.17285329480057;
-  double salelat = 25.2041855;
-  double salelonf = 55.2628803;
+  double salelat = 25.204129539405333;
+  double salelonf = 55.2630970221345;
   Location location = Location();
   late StreamSubscription<LocationData> _locationSubscription;
   final Set<Marker> markers = new Set();
@@ -106,24 +106,8 @@ class _DashboardExampleState extends State<NewDashboardExample> with TickerProvi
       if (distanceBetween < 200) {
         print('user reached to the destination...');
 
-       /* scheduleNotification(
-            "Georegion added", "Your geofence has been added! - damac");
-*/
-        /// I simply show a snackBar message here you can implement your custom logic here.
-        /*ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('You reached to the location',
-                style: TextStyle(color: Colors.white),),
-                backgroundColor: Colors.redAccent,)
-          );*/
       }else{
-        /*ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('You reached to the location',
-              style: TextStyle(color: Colors.white),),
-              backgroundColor: Colors.redAccent,)
-        );*/
-
-       /* scheduleNotification(
-            "Georegion added", "You are outside radius");*/
+      
       }
     });
   }
