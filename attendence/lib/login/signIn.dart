@@ -315,6 +315,7 @@ class _signInExampleExampleState extends State<signInExample> with TickerProvide
         prefs = await SharedPreferences.getInstance();
         await prefs.setString('username', userName);
         await prefs.setBool('firstLogin', true);
+        await prefs.setBool('firstnotify', false);
         Navigator.push(
           context,
           MaterialPageRoute(
