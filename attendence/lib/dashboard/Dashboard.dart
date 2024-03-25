@@ -21,36 +21,6 @@ import '../model/profile/viewprofile.dart';
 import '../myattendence/MyAttendence.dart';
 import '../profile/ViewProfile.dart';
 
-  onStart(ServiceInstance service) async {
-    DartPluginRegistrant.ensureInitialized();
-    if (service is AndroidServiceInstance) {
-      service.on('setAsForeground').listen((event) {
-        service.setAsForegroundService();
-      });
-      service.on('setAsBackground').listen((event) {
-        service.setAsBackgroundService();
-      });
-    }
-    service.on('stopService').listen((event) {
-      service.stopSelf();
-    });
-    Timer.periodic(const Duration(seconds: 2), (timer) async {
-      if (service is AndroidServiceInstance) {
-        service.setForegroundNotificationInfo(
-          title: "AHS Properties - HR",
-          content: "Running in background",
-        );
-      }
-
-     // print('FLUTTER BACKGROUND SERVICE: ');
-      service.invoke(
-        'update', {
-          "current_date": DateTime.now().toIso8601String(),
-        },
-      );
-    });
-  }
-
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
 
@@ -81,7 +51,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
   double damaclong = 55.17285329480057;
   double salelat = 25.09554209900229;
   double salelonf = 25.09554209900229;
-  late LocationData currentLocation;
   Location location = Location();
   late StreamSubscription<LocationData> _locationSubscription;
   final Set<Marker> markers = new Set();
@@ -95,6 +64,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
   String userMobile = "-";
   String  token = "";
   String userPhoto = "";
+  bool notify = false;
   late SharedPreferences prefs;
 
   @override
@@ -107,31 +77,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: null);
     checkCurrentLocation();
     //getCurrentLocation();
-    initializeApp();
     getToken();
-  }
-
-  initializeApp() async {
-    final service = FlutterBackgroundService();
-
-    await service.configure(
-      androidConfiguration: AndroidConfiguration(
-
-        onStart: onStart,
-        autoStart: true,
-        isForegroundMode: true,
-      ),
-      iosConfiguration: IosConfiguration(
-        autoStart: true,
-        onForeground: onStart,
-        onBackground: onIosBackground,
-      ),
-    );
-    service.startService();
-  }
-
-  Future<bool> onIosBackground(ServiceInstance serviceInstance) async {
-    return true;
   }
 
 
@@ -141,6 +87,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       isLoading = true;
       empId = prefs.getString('username').toString();
       token = prefs.getString('token').toString();
+      notify =  prefs.getBool('firstnotify')!;
       Profile(empId,token);
     });
   }
@@ -172,7 +119,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
       userMobile = data.mobilenumber;
       userPhoto = data.photo;
     } else if(response.statusCode == 401){
-
+      Autorization();
     }else {
       setState(() {
         isLoading = false;
@@ -181,7 +128,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     }
   }
 
-  Autorization(String userName, String password) async {
+  Autorization() async {
     var headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
@@ -209,7 +156,6 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
 
       Timer(Duration(seconds: 1), () {
         Profile(empId, "Bearer " + data.accessToken);
-        //Profile("IY01482","Bearer " + data.accessToken);
       });
     } else {
       print(response.statusMessage);
@@ -231,20 +177,21 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
 
   void getCurrentLocation() async{
     location = Location();
+    LocationData currentLocation = await location.getLocation();
     if(location.isBackgroundModeEnabled() == false){
       location.enableBackgroundMode(enable: true);
     }
 
     location.getLocation().then((value){
       currentLocation = value;
+      damaclong = currentLocation.longitude!;
+      damaclat = currentLocation.latitude!;
       addCurrentLocMarker(currentLocation);
     });
 
     _locationSubscription = location.onLocationChanged.listen((newLoc) {
       setState(() {
-        /// update the currentLocation with new location value
         currentLocation = newLoc;
-        // We have to also update the markers by passing the new location value
         addCurrentLocMarker(newLoc);
       });
     });
@@ -256,8 +203,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
             LatLng(damaclat, damaclong), LatLng(
             newLoc.latitude!, newLoc.longitude!));
 
-        if (distanceBetween < 200) {
-          print('user reached to the destination...');
+      /*  if (distanceBetween < 200) {
           if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
             sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
             scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
@@ -274,18 +220,17 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
           }
           scheduleNotification(
               "AHS Properties - HR", "You are out of office - Punch out");
-         /* ScaffoldMessenger.of(context).showSnackBar(
+         *//* ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('You reached to the location',
                 style: TextStyle(color: Colors.white),),
                 backgroundColor: Colors.redAccent,)
-          );*/
-        }
+          );*//*
+        }*/
       });
   }
 
   void checkCurrentLocation(){
   Timer.periodic(const Duration(seconds: 2), (timer) async {
-  //scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
   getCurrentLocation();
 });
 }
@@ -304,22 +249,8 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(
-        rng.nextInt(100000), title, subtitle, platformChannelSpecifics,
+        0, title, subtitle, platformChannelSpecifics,
         payload: 'item x');
-   /* Future.delayed(Duration(seconds: 2)).then((result) async {
-      var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-          'your channel id', 'your channel name',
-          importance: Importance.high,
-          priority: Priority.high,
-          ticker: 'ticker');
-      var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-      var platformChannelSpecifics = NotificationDetails(
-          android: androidPlatformChannelSpecifics,
-          iOS: iOSPlatformChannelSpecifics);
-      await flutterLocalNotificationsPlugin.show(
-          rng.nextInt(100000), title, subtitle, platformChannelSpecifics,
-          payload: 'item x');
-    });*/
   }
 
   dynamic haversineDistance(LatLng player1, LatLng player2) {
@@ -531,7 +462,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                   ),
                   onPressed: () {
                     isLoading = true;
-                      if(damaclat == 25.09554209900229 && checkedInText == "Punch-In"){
+                      if(damaclat == damaclat && checkedInText == "Punch-In"){
                         sendLocationToServer(empId, "Damac Executive Heights", "Y",'Punched In Damac Executive heights \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
@@ -539,11 +470,13 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
                         sendLocationToServer(empId, "AHS Sales Center", "Y",'Punched In AHS Sales Center \n' + currentDate + " " + currentTime);
                         scheduleNotification("AHS Properties - HR", "You are at office - Punch In");
 
-                      }else if(damaclat == 25.09554209900229 && checkedInText == "Punch-Out"){
+                      }else if(damaclat == damaclat && checkedInText == "Punch-Out"){
                         sendLocationToServer(empId, "Damac Executive Heights", "",'Punched Out Damac Executive heights \n' + currentDate + " " + currentTime);
+                        scheduleNotification("AHS Properties - HR", "You are out of office - Punch Out");
 
                       }else if(damaclat == salelat && checkedInText == "Punch-Out"){
                         sendLocationToServer(empId, "AHS Sales Center", "",'Punched Out AHS Sales Center \n' + currentDate + " " + currentTime);
+                        scheduleNotification("AHS Properties - HR", "You are out of office - Punch Out");
                       }
                   },
                   child: Text(
@@ -741,7 +674,7 @@ class _DashboardExampleState extends State<DashboardExample> with TickerProvider
     );
   }
 
-  sendLocationToServer(String empId,String location,String status,String name ) async {
+   sendLocationToServer(String empId,String location,String status,String name ) async {
     final prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('token').toString();
 
